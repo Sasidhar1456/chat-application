@@ -41,6 +41,9 @@ body {
   grid-row: span 10 / span 10;
   grid-column-start: 3;
   border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .copilot-div {
