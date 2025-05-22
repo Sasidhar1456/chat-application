@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Inbox from './components/Inbox'
 
+
 function App() {
 
   return (
@@ -14,13 +15,7 @@ function App() {
 
       <div className="messages-description-div">
 
-        <div className='message-status'>
-
-        </div>
-
-        <div className='actual-messages'>
-          
-        </div>
+        
       </div>
 
 
