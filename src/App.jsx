@@ -12,7 +12,16 @@ function App() {
       </div>
 
 
-      <div className="messages-description-div">2</div>
+      <div className="messages-description-div">
+
+        <div className='message-status'>
+
+        </div>
+
+        <div className='actual-messages'>
+          
+        </div>
+      </div>
 
 
       <div className="copilot-div">3</div>
