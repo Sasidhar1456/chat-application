@@ -1,29 +1,142 @@
-import { useState } from 'react'
-import './App.css'
-import Inbox from './components/Inbox'
-
+// App.js
+import { useState, useEffect } from 'react';
+import './App.css';
+import Inbox from './components/Inbox';
+import MessageDesc1 from './components/MessageDesc1';
+import MessageDesc2 from './components/MessageDesc2';
+import MessageDesc3 from './components/MessageDesc3';
+import Copilot from './components/Copilot';
 
 function App() {
+  const [selectedMessage, setSelectedMessage] = useState(null);
+  const [showMessageView, setShowMessageView] = useState(false);
+  const [showCopilot, setShowCopilot] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobileNow = window.innerWidth < 768;
+      setIsMobile(mobileNow);
+
+      if (!mobileNow) {
+        // On desktop, reset any mobile‐only state.
+        setShowMessageView(false);
+        setShowCopilot(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleSelectMessage = (msgId) => {
+    setSelectedMessage(msgId);
+    if (isMobile) {
+      setShowMessageView(true);
+    }
+  };
+
+  const handleBackToInbox = () => {
+    setShowMessageView(false);
+    setSelectedMessage(null);
+  };
+
+  const handleOpenCopilot = () => {
+    setShowCopilot(true);
+  };
+  const handleCloseCopilot = () => {
+    setShowCopilot(false);
+  };
+
+  const renderMessageDesc = () => {
+    switch (selectedMessage) {
+      case 1:
+        return (
+          <MessageDesc1
+            onBack={handleBackToInbox}
+            onOpenCopilot={handleOpenCopilot}
+            isMobile={isMobile}
+          />
+        );
+      case 2:
+        return (
+          <MessageDesc2
+            onBack={handleBackToInbox}
+            onOpenCopilot={handleOpenCopilot}
+            isMobile={isMobile}
+          />
+        );
+      case 3:
+        return (
+          <MessageDesc3
+            onBack={handleBackToInbox}
+            onOpenCopilot={handleOpenCopilot}
+            isMobile={isMobile}
+          />
+        );
+      default:
+        return (
+          <div className="placeholder-desc">
+            <p>Please select a message from the inbox.</p>
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="content-wrapper">
-
-      <div className="messages-div">
-        <Inbox />
+      {/* ────── INBOX PANE ────── */}
+      <div
+        className="messages-div"
+        style={{
+          display:
+            isMobile && (showMessageView || showCopilot) ? 'none' : 'flex',
+        }}
+      >
+        <Inbox
+          selectedMessage={selectedMessage}
+          onSelectMessage={handleSelectMessage}
+        />
       </div>
 
-
-      <div className="messages-description-div">
-
-        
+      {/* ───── MESSAGE‐DETAILS PANE ───── */}
+      <div
+        className="messages-description-div"
+        style={{
+          display:
+            isMobile
+              ? showMessageView && !showCopilot
+                ? 'flex'
+                : 'none'
+              : 'flex',
+        }}
+      >
+        {renderMessageDesc()}
       </div>
 
-
-      <div className="copilot-div">3</div>
-
-
+      {/* ───── COPILOT PANE ───── */}
+      <div
+        className="copilot-div"
+        style={{
+          display: isMobile ? (showCopilot ? 'block' : 'none') : 'block',
+          ...(isMobile && showCopilot
+            ? {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                zIndex: 10,
+                backgroundColor: '#fff',
+                boxShadow: '2px 0 8px rgba(0,0,0,0.2)',
+              }
+            : {}),
+        }}
+      >
+        <Copilot onClose={handleCloseCopilot} isMobile={isMobile} />
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
