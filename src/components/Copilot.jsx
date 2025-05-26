@@ -21,7 +21,7 @@ const Copilot = ({ onClose, isMobile }) => {
         </span>
         <span>Details</span>
 
-        {/* Only show “×” (close) on mobile. */}
+        {/* Show “×” (close) only on mobile. */}
         {isMobile && (
           <span
             className="copilot-close-icon"
@@ -52,23 +52,19 @@ const Copilot = ({ onClose, isMobile }) => {
           <input placeholder="Ask anything you want" className="textarea1" />
         </div>
 
-        {/* On mobile only, show the arrow (FaArrowUp) that closes Copilot. */}
-        {isMobile && (
-          <div
-            style={{
-              width: '20%',
-              display: 'flex',
-              justifyContent: 'flex-end',
-              alignItems: 'center',
-              padding: '0.7rem',
-            }}
-          >
-            <FaArrowUp
-              style={{ fontSize: '24px' }}
-              
-            />
-          </div>
-        )}
+        {/* Show arrow icon on all screen sizes */}
+        <div
+          style={{
+            width: '20%',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            padding: '0.7rem',
+            cursor: 'pointer',
+          }}
+        >
+          <FaArrowUp style={{ fontSize: '24px' }} />
+        </div>
       </div>
     </div>
   );

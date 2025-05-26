@@ -1,4 +1,3 @@
-// App.js
 import { useState, useEffect } from 'react';
 import './App.css';
 import Inbox from './components/Inbox';
@@ -17,23 +16,18 @@ function App() {
     const handleResize = () => {
       const mobileNow = window.innerWidth < 768;
       setIsMobile(mobileNow);
-
       if (!mobileNow) {
-        // On desktop, reset any mobile‐only state.
         setShowMessageView(false);
         setShowCopilot(false);
       }
     };
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleSelectMessage = (msgId) => {
     setSelectedMessage(msgId);
-    if (isMobile) {
-      setShowMessageView(true);
-    }
+    if (isMobile) setShowMessageView(true);
   };
 
   const handleBackToInbox = () => {
@@ -41,45 +35,29 @@ function App() {
     setSelectedMessage(null);
   };
 
-  const handleOpenCopilot = () => {
-    setShowCopilot(true);
-  };
-  const handleCloseCopilot = () => {
-    setShowCopilot(false);
-  };
+  const handleOpenCopilot = () => setShowCopilot(true);
+  const handleCloseCopilot = () => setShowCopilot(false);
 
   const renderMessageDesc = () => {
+    if (!selectedMessage) {
+      return <div className="placeholder-desc"><p>Please select a message from the inbox.</p></div>;
+    }
+
+    const props = {
+      onBack: handleBackToInbox,
+      onOpenCopilot: handleOpenCopilot,
+      isMobile
+    };
+
     switch (selectedMessage) {
       case 1:
-        return (
-          <MessageDesc1
-            onBack={handleBackToInbox}
-            onOpenCopilot={handleOpenCopilot}
-            isMobile={isMobile}
-          />
-        );
+        return <MessageDesc1 {...props} />;
       case 2:
-        return (
-          <MessageDesc2
-            onBack={handleBackToInbox}
-            onOpenCopilot={handleOpenCopilot}
-            isMobile={isMobile}
-          />
-        );
+        return <MessageDesc2 {...props} />;
       case 3:
-        return (
-          <MessageDesc3
-            onBack={handleBackToInbox}
-            onOpenCopilot={handleOpenCopilot}
-            isMobile={isMobile}
-          />
-        );
+        return <MessageDesc3 {...props} />;
       default:
-        return (
-          <div className="placeholder-desc">
-            <p>Please select a message from the inbox.</p>
-          </div>
-        );
+        return null;
     }
   };
 

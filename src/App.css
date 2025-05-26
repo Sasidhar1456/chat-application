@@ -159,6 +159,27 @@ body {
   background-color: #6a6dce;
 }
 
+.message-icon2 {
+  align-self: flex-start;
+  border-radius: 100%;
+  background-color: #dd3c5e;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.9rem;
+}
+.message-icon-selected {
+  background-color: #6a6dce;
+}
+
+.message-icon3 {
+  align-self: flex-start;
+  border-radius: 100%;
+  background-color: #2e3036;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.6rem;
+}
+
 /* Content */
 .message-cont {
   align-self: center;

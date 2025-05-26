@@ -1,37 +1,8 @@
-// components/Inbox.js
 import React from 'react';
-import {
-  BsJustify,
-  BsPipFill,
-  BsReverseLayoutSidebarReverse,
-} from 'react-icons/bs';
+import { BsJustify, BsPipFill } from 'react-icons/bs';
 import { FaChevronDown } from 'react-icons/fa';
 
 const Inbox = ({ selectedMessage, onSelectMessage }) => {
-  const messages = [
-    {
-      id: 1,
-      icon: 'L',
-      sender: 'Luis - Github',
-      preview: 'Hey! I have a question about my order.',
-      time: '45m',
-    },
-    {
-      id: 2,
-      icon: 'I',
-      sender: 'Ivan - Nike',
-      preview: 'Hi there! I need help with my account.',
-      time: '1h',
-    },
-    {
-      id: 3,
-      icon: 'M',
-      sender: 'Maya - Spotify',
-      preview: 'Hello! Can you assist me with a refund?',
-      time: '2h',
-    },
-  ];
-
   return (
     <>
       <div className="inbox">
@@ -54,32 +25,47 @@ const Inbox = ({ selectedMessage, onSelectMessage }) => {
           </div>
 
           <div className="actual-messages">
-            {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`message-item ${
-                  selectedMessage === msg.id ? 'selected' : ''
-                }`}
-                onClick={() => onSelectMessage(msg.id)}
-              >
-                <span
-                  className={`message-icon ${
-                    selectedMessage === msg.id
-                      ? 'message-icon-selected'
-                      : ''
-                  }`}
-                >
-                  {msg.icon}
-                </span>
-
-                <div className="message-cont">
-                  <span className="message-head">{msg.sender}</span>
-                  <span className="message-desc">{msg.preview}</span>
-                </div>
-
-                <span className="message-time">{msg.time}</span>
+            <div
+              className={`message-item ${selectedMessage === 1 ? 'selected' : ''}`}
+              onClick={() => onSelectMessage(1)}
+            >
+              <span className={`message-icon ${selectedMessage === 1 ? 'message-icon-selected' : ''}`}>
+                L
+              </span>
+              <div className="message-cont">
+                <span className="message-head">Luis - Github</span>
+                <span className="message-desc">Hey! I have a question about my order.</span>
               </div>
-            ))}
+              <span className="message-time">45m</span>
+            </div>
+
+            <div
+              className={`message-item ${selectedMessage === 2 ? 'selected' : ''}`}
+              onClick={() => onSelectMessage(2)}
+            >
+              <span className={`message-icon2 ${selectedMessage === 2 ? 'message-icon-selected' : ''}`}>
+                I
+              </span>
+              <div className="message-cont">
+                <span className="message-head">Ivan - Nike</span>
+                <span className="message-desc">Hi there! I need help with my account.</span>
+              </div>
+              <span className="message-time">1h</span>
+            </div>
+
+            <div
+              className={`message-item ${selectedMessage === 3 ? 'selected' : ''}`}
+              onClick={() => onSelectMessage(3)}
+            >
+              <span className={`message-icon3 ${selectedMessage === 3 ? 'message-icon-selected' : ''}`}>
+                M
+              </span>
+              <div className="message-cont">
+                <span className="message-head">Maya - Spotify</span>
+                <span className="message-desc">Hello! Can you assist me with a refund?</span>
+              </div>
+              <span className="message-time">2h</span>
+            </div>
           </div>
         </div>
       </div>

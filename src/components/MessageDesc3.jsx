@@ -1,7 +1,7 @@
 // components/MessageDesc3.js
 import React from 'react';
 import { FaChevronDown, FaMoon } from 'react-icons/fa';
-import { GoBookmarkFill } from 'react-icons/go';
+import { GoBookmarkFill, GoCopilot } from 'react-icons/go';
 import { HiDotsHorizontal } from 'react-icons/hi';
 import { MdChat, MdElectricBolt, MdEmojiEmotions } from 'react-icons/md';
 import { IoArrowBackOutline, IoChatbubblesOutline } from 'react-icons/io5';
