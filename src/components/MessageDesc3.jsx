@@ -45,7 +45,7 @@ const MessageDesc3 = ({ onBack, onOpenCopilot, isMobile }) => {
 
       <div className="convo-cont">
         <div className="convo1">
-          <div className="message-profile">M</div>
+          <div className="message-icon3">M</div>
           <div className="message-content">
             Hi there! I’m looking to get a refund for my yearly subscription. I
             accidentally purchased the wrong plan.

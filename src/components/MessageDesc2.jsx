@@ -45,7 +45,7 @@ const MessageDesc2 = ({ onBack, onOpenCopilot, isMobile }) => {
 
       <div className="convo-cont">
         <div className="convo1">
-          <div className="message-profile">R</div>
+          <div className="message-icon2">I</div>
           <div className="message-content">
             Just wanted to let you know that your subscription renewal is coming
             up in two days. Let me know if you need any assistance.

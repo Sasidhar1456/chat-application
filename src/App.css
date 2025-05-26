@@ -155,9 +155,7 @@ body {
   font-weight: 500;
   padding: 0.5rem 0.8rem;
 }
-.message-icon-selected {
-  background-color: #6a6dce;
-}
+
 
 .message-icon2 {
   align-self: flex-start;
@@ -167,9 +165,7 @@ body {
   font-weight: 500;
   padding: 0.5rem 0.9rem;
 }
-.message-icon-selected {
-  background-color: #6a6dce;
-}
+
 
 .message-icon3 {
   align-self: flex-start;
